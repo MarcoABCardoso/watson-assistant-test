@@ -73,6 +73,7 @@ let results = await testSuite.run()
     }
   ]
 }
+```
 
 ## Run tests
 
