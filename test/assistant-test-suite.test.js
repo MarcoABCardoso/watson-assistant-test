@@ -93,7 +93,7 @@ describe('Assistant', () => {
             testSuite.assistantAPI = assistantV2Mock
             testSuite.run()
                 .then(results => {
-                    expect(results).toEqual({ 'details': [{ 'name': 'foo_passing_test', 'success': true }, { 'error': 'Expression [output.text == "Something incorrect"] is false for obtained output {"context":{"conversation_id":"foo_conversation_id"},"output":{"text":["Response to input {\\"text\\":\\"goodbye\\"} with context undefined"]}}', 'name': 'foo_failing_test', 'success': false }, { 'error': { 'message': 'Property \'invalidSyntax\' does not exist.', 'name': 'NullPointerException' }, 'name': 'foo_broken_test_input', 'success': false }, { 'error': { 'message': 'Property \'invalidSyntax\' does not exist.', 'name': 'NullPointerException' }, 'name': 'foo_broken_test_output', 'success': false }], 'failed': 3, 'passed': 1, 'success': false })
+                    expect(results).toEqual({ 'details': [{ 'name': 'foo_passing_test', 'success': true }, { 'error': 'Expression [output.text == "Something incorrect"] is false for obtained output', 'name': 'foo_failing_test', 'success': false , index: 1}, { 'error': { 'message': 'Property \'invalidSyntax\' does not exist.', 'name': 'NullPointerException' }, 'name': 'foo_broken_test_input', 'success': false, index: 0 }, { 'error': { 'message': 'Property \'invalidSyntax\' does not exist.', 'name': 'NullPointerException' }, 'name': 'foo_broken_test_output', 'success': false, index: 0 }], 'failed': 3, 'passed': 1, 'success': false })
                     done()
                 })
                 .catch(err => done.fail(err))
