@@ -34,7 +34,8 @@ let failingTestOptions = {
             name: 'foo_passing_test',
             rounds: [
                 { inputExpression: '{ input: { text: "hello" } }', evaluateExpression: 'output.text[0] == \'Response to input {"text":"hello"} with context undefined\'' },
-                { inputExpression: '{ input: { text: "hello again" }, context: context }', evaluateExpression: 'output.text[0] == \'Response to input {"text":"hello again"} with context {"conversation_id":"foo_conversation_id"}\'' },
+                { inputExpression: 'context.foo="bar";_={context}', skip: true },
+                { inputExpression: '{ input: { text: "hello again" }, context: context }', evaluateExpression: 'output.text[0] == \'Response to input {"text":"hello again"} with context {"conversation_id":"foo_conversation_id","foo":"bar"}\'' },
             ]
         },
         {
